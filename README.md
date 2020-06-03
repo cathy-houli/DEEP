@@ -66,7 +66,7 @@ Evaluation
 ============
 
     simulated data sets are available at: http://bioinf.itmat.upenn.edu/BEERS/bp1/
-    evaluation programs are available at: 
+    evaluation programs are available at: https://github.com/cathy-houli/DEEP
 
 Contact
 ============
