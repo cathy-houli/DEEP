@@ -1,0 +1,49 @@
+The results evaluation of RNA-seq aligners on simulated and real datasets.
+
+Evaluation programs are writen by C-language and R-language, and applied to Linux environment. The workflow of evaluation will be demonstrated next.
+
+1.Evaluation of simulated datasets on base-level and read-level
+
+    Here we compare align results (SAM format) with simulated data answers. 
+
+    [1] sort simulated data answer files and test align result files by name.
+
+        sort -o answer.sread -k1,1 answer_file.cig
+        sort -o test.sread -k1,1 test_file.sam
+
+    [2] compile read-sta.c and run it.
+
+        gcc -Wall -O0 -o stat_read stat_read.c
+	./stat_read answer.sread test.sread
+
+2.Evaluation of simulated datasets and real datasets on splice-level.
+
+    Here we compare splice junctions extracted from simulated data answers and align results (SAM file).
+
+    [1] extract splice junctions from gtf files.
+        
+        gcc -Wall -O0 -o gtf2splice gtf2splice.c
+        ./gtf2splice reference.gtf ref.splice
+
+        remove duplicate splice:
+            sort ref.splice -k1,1 -k2,2n -k3,3n -o ref.sort.splice
+            run splice_dup.R
+            before run splice_dup.R need to change input file name and output file name
+	
+    [2] extract splice junctions from answer files.
+
+        gcc -Wall -O0 -o read2splice read2splice.c
+        ./read2splice answer.cig answer.splice a
+        remove duplicate splice
+
+    [3] extract splice junctions from align files.
+
+        gcc -Wall -O0 -o read2splice read2splice.c
+        ./read2splice test.sam test.splice r
+        remove duplicate splice
+
+    [4] compare align results splice junctions with answer splice junctions.
+        
+        gcc -Wall -O0 -o splice splice.c
+        ./splice answer.sort.cov.splice answer.sort.cov.splice
+
