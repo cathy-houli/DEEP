@@ -433,7 +433,7 @@ int main(int argc, char *argv[])
     fprintf(stdout,"Answer totally wrong read: %d/percentage %0.2f\n",A_Wrong,(float)A_Wrong/A_read);
     fprintf(stdout,"Test partly Right read: %d/percentage %0.2f\n",T_Part,(float)T_Part/T_read);
     fprintf(stdout,"Test totally wrong read: %d/percentage %0.2f\n",T_Wrong,(float)T_Wrong/T_read);
-    fprintf(stdout,"unmapped read: %d/percentage %0.2f(answer),%.2f(test)\n",Un,(float)Un/A_read,(float)Un/T_read);
+    fprintf(stdout,"unmapped read: %d/unmapped read percentage in answer, %0.2f(answer)/unmapped read percentage in test result, %.2f(test)\n",Un,(float)Un/A_read,(float)Un/T_read);
 
     return 0;
 }
