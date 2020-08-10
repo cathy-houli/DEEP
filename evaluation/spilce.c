@@ -121,7 +121,7 @@ int main(int argc, char *argv[])
     printf("right/wrong splice in input sam file:%d/%d\n",test_right,test_wrong);
     right_per = (float)test_right/total_test;
     wrong_per = (float)test_wrong/total_test;
-    printf("percentage of found/unfound splice in gtf file:%.2f/%.2f\n\n",right_per,wrong_per);
+    printf("percentage of annotation/unannotation splice in input sam file:%.2f/%.2f\n\n",right_per,wrong_per);
 
     free(anwser);
     free(test);
